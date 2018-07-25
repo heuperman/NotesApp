@@ -12,4 +12,12 @@
     <script src='note-list-view.js'></script>
     <script src='note-controller.js'></script>
 
+    <script type="text/javascript">
+      notelist = new NoteList();
+      notelist.newNote("this is a testing note made by Nabil and Kees")
+      notelist.newNote("this is an another testing note")
+      noteController = new NoteController(notelist)
+      noteController.insertHTML();
+    </script>
+
 </html>

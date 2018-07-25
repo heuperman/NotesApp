@@ -10,7 +10,7 @@
     var i;
 
     for (var i = 0; i < arrayLength; i++) {
-      array.push("<li><div>" + notes[i].text.substring(0,20) + "</div></li>")
+      array.push(`<li><div><a href="http://localhost:8080#notes/${i}">` + notes[i].text.substring(0,20) + '</a></div></li>')
     }
 
     return "<ul>" + array.join("") + "</ul>"
