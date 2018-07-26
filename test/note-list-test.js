@@ -1,42 +1,34 @@
-function testInstatiation() {
-  var noteListInstance = new NoteList()
-  assert.isTrue(noteListInstance instanceof noteList)
-}
+(function() {
+  describe(".storeNotes", function() {
+    it("stores notes in an array", function() {
+      var note = new Note();
+      var notelist = new NoteList();
+      notelist.storeNote(note);
+      expect(notelist.notes.includes(note)).toBeTrue();
+    });
+  });
 
-function testNotesArray() {
-  var noteListInstance = new NoteList()
-  assert.isTrue(Array.isArray(noteListInstance.notes))
-}
+  describe(".returnNotes", function() {
+    it("returns notes from an array", function() {
+      var note = new Note();
+      var notelist = new NoteList();
+      notelist.storeNote(note);
+      expect(notelist.returnNotes().includes(note)).toBeTrue();
+    });
+  });
 
-function testStoreNotesInArray() {
-  var note = new Note();
-  var notelist = new NoteList();
-  notelist.storeNote(note);
-  assert.isTrue(notelist.notes.includes(note))
-}
+  describe(".newNote", function() {
+    it("instantiates a new note", function() {
+      var notelist = new NoteList();
+      notelist.newNote('string');
+      expect(notelist.returnNotes()[0].text).toEqual('string');
+    });
 
-function testReturnNotesInArray() {
-  var note = new Note()
-  var notelist = new NoteList()
-  notelist.storeNote(note)
-  assert.isTrue(notelist.returnNotes().includes(note))
-}
-
-function instantiatesNewNote() {
-  var notelist = new NoteList()
-  notelist.newNote('string');
-  assert.isTrue(notelist.returnNotes()[0].text === 'string')
-}
-
-function assingsUniqueID() {
-  var notelist = new NoteList();
-  notelist.newNote('string');
-  notelist.newNote('string2');
-  assert.isTrue(notelist.notes[0].id !== notelist.notes[1].id);
-}
-
-testNotesArray();
-testStoreNotesInArray();
-testReturnNotesInArray();
-instantiatesNewNote();
-assingsUniqueID();
+    it("assigns a unique ID", function() {
+      var notelist = new NoteList();
+      notelist.newNote('string');
+      notelist.newNote('string2');
+      expect(notelist.notes[0].id !== notelist.notes[1].id).toBeTrue();
+    });
+  });
+})();
